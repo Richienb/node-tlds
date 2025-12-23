@@ -16,3 +16,12 @@ const tlds = require("tlds");
 console.log(tlds);
 //=> ['aaa', 'aarp', 'abarth', 'abb', 'abbott', 'abbvie', 'abc', ...]
 ```
+
+Or, with ESM:
+
+```js
+import tlds from "tlds" with { type: "json" };
+
+console.log(tlds);
+//=> ['aaa', 'aarp', 'abarth', 'abb', 'abbott', 'abbvie', 'abc', ...]
+```

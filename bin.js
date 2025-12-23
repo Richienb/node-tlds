@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-const tlds = require(".");
+import tlds from "./index.json" with { type: "json" };
 
 tlds.forEach((tld) => console.log(tld));

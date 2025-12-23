@@ -1,5 +1,5 @@
-const assert = require("assert");
-const tlds = require(".");
+import assert from "node:assert";
+import tlds from "./index.json" with { type: "json" };
 
 assert(Array.isArray(tlds));
 assert(tlds.length > 10);

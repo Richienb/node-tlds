@@ -11,6 +11,10 @@
     "index.d.ts",
     "bin.js"
   ],
+  "type": "module",
+  "exports": {
+    ".": "./index.json"
+  },
   "bin": "bin.js",
   "scripts": {
     "lint": "eslint .",
@@ -26,12 +30,12 @@
     "domains"
   ],
   "devDependencies": {
-    "eslint": "^7.6.0",
-    "got": "^11.5.1",
-    "is-punycode": "^1.0.1",
-    "prettier": "^2.8.8",
-    "punycode": "^2.1.1",
-    "semver": "^7.3.2"
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "globals": "^16.5.0",
+    "prettier": "^3.7.4",
+    "punycode": "^2.3.1",
+    "semver": "^7.7.3"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",

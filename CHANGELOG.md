@@ -872,8 +872,8 @@
 # 1.47.0 / 2015-06-07
 
 - index: update list from ICANN
-- update: remove prefixed 
- char
+- update: remove prefixed
+  char
 
 # 1.46.0 / 2015-06-04
 

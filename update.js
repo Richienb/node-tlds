@@ -1,22 +1,19 @@
-const { decode: decodePunycode } = require("punycode/");
-const got = require("got");
-const isPunycode = require("is-punycode");
-const fs = require("fs");
+import { toUnicode as decodePunycode } from "punycode/punycode.es6.js";
+import { promises as fs } from "node:fs";
 
-const update = async () => {
-  const { body } = await got(
-    "https://data.iana.org/TLD/tlds-alpha-by-domain.txt"
-  );
+const response = await fetch(
+  "https://data.iana.org/TLD/tlds-alpha-by-domain.txt",
+);
+const body = await response.text();
 
-  const data = body
-    .split("\n")
-    .slice(1, -1)
-    .map((item) => (isPunycode(item) ? decodePunycode(item.slice(4)) : item))
-    .map((item) => item.toLowerCase())
-    .sort();
+const data = body
+  .split("\n")
+  .filter((item) => !item.startsWith("#") && item.trim() !== "")
+  .map((item) =>
+    item.startsWith("XN--") ? decodePunycode(item.toLowerCase()) : item,
+  )
+  .map((item) => item.toLowerCase())
+  .sort();
 
-  fs.writeFileSync("index.json", JSON.stringify(data, null, 2));
-  console.log(`Saved ${data.length} TLDs!`);
-};
-
-update();
+await fs.writeFile("index.json", JSON.stringify(data, null, 2));
+console.log(`Saved ${data.length} TLDs!`);
